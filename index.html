@@ -1,5 +1,20 @@
-<form action="https://formspree.io/f/maqaobyw" method="POST">
-    <input type="email" name="email" placeholder="Apna Email" required>
-    <textarea name="message" placeholder="Message" required></textarea>
-    <button type="submit">Send</button>
-</form>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body { font-family: sans-serif; padding: 20px; display: flex; justify-content: center; }
+        form { display: flex; flex-direction: column; gap: 15px; width: 100%; max-width: 400px; }
+        input, textarea { padding: 15px; border: 2px solid #ccc; border-radius: 10px; font-size: 16px; }
+        button { padding: 15px; background: #007bff; color: white; border: none; border-radius: 10px; font-size: 18px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <form action="https://formspree.io/f/maqaobyw" method="POST">
+        <h2 style="text-align: center;">Contact Form</h2>
+        <input type="email" name="email" placeholder="Apna Email" required>
+        <textarea name="message" placeholder="Message" required rows="5"></textarea>
+        <button type="submit">Send</button>
+    </form>
+</body>
+</html>

